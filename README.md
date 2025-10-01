@@ -3,7 +3,7 @@ Grade 8 Computer Science 2
 
 # Project Title Task Reminder and Organizer
 
-## Project Desstription
+## Project Description
 Notifies students on deadlines and organizes tasks.
 
 ## Features
