@@ -1,0 +1,80 @@
+tasks = {} 
+add_tasks = dict[]
+find_tasks = dict[]
+modify_tasks = dict[]
+
+def menu():
+  choice=int(input("""Menu\n
+1. Add new task
+2. Delete tasks
+3. Search tasks
+4. Modify tasks
+5. End
+
+Enter choice: """))
+	return
+
+print(menu())
+
+while choice!==5:
+
+	if choice<1 or choice>5:
+        	print("Invalid input!")
+	else:
+		if choice==1:
+        		taskname=str(input("Enter task name: "))
+        		description=str(input("Enter task description: "))
+        		duedate=str(input("Enter due date: "))
+		
+			add_tasks.update([('taskname', taskname), ('description', description), ('duedate', duedate)])
+			tasks.append(add_tasks)
+
+			print("Task added!")
+
+		elif choice==2:
+			delete=str(input("Enter task you want to delete: "))
+		
+			tasks.remove(delete)
+
+			print("Task deleted!")
+
+		elif choice==3:
+			find_taskname=str(input("Enter task name of task you want to find: "))
+			find_descrption=str(input("Enter description of task you want to find: "))
+			find_duedate=str(input("Enter due date of task you want to find: "))
+		
+			find_tasks.update([('taskname', find_taskname), ('description', find_description), ('duedate', find_duedate)])
+
+
+			if find_tasks in tasks:
+				print(find_tasks)
+				print("Task found!")
+			else:
+				print("Task does not exist!")
+
+		elif choice==4:
+			modify_taskname=str(input("Enter task name of task you want to modify: "))
+			modify_descrption=str(input("Enter description of task you want to modify: "))
+			modify_duedate=str(input("Enter due date of task you want to modify: "))
+		
+			modify_tasks.update([('taskname', modify_taskname), ('description', modify_description), ('duedate', modify_duedate)])
+
+
+			if modify_tasks in tasks:
+				modify2_taskname=str(input("Enter new task name: "))
+				modify2_descrption=str(input("Enter new description: "))
+				modify2_duedate=str(input("Enter new due date: "))
+				
+				modify2_tasks.update([('taskname', modify2_taskname), ('description', modify2_description), ('duedate', modify2_duedate)])
+
+				tasks[modify_tasks]=modify2_tasks
+
+				print("Task modified!")
+			else:
+				print("Task does not exist!")
+
+
+	print(menu())
+
+
+print("Goodbye and thank you!")
