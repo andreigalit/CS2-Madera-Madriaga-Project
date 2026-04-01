@@ -1,3 +1,5 @@
+from datetime import datetime
+
 tasks = []
 
 def menu():
@@ -24,7 +26,7 @@ while choice != 5:
         if choice == 1:
             taskname = input("Enter task name: ")
             description = input("Enter task description: ")
-            duedate = input("Enter due date: ")
+            duedate = datetime.strptime(input("Enter due date (YYYY-MM-DD): "), "%Y-%m-%d")
 
             add_task = {'taskname': taskname, 'description': description, 'duedate': duedate}
 
@@ -67,7 +69,7 @@ while choice != 5:
                 if task['taskname'] == modify_taskname:
                     new_name = input("Enter new task name: ")
                     new_description = input("Enter new description: ")
-                    new_duedate = input("Enter new due date: ")
+                    new_duedate = datetime.strptime(input("Enter new due date (YYYY-MM-DD): "), "%Y-%m-%d")
 
                     task['taskname'] = new_name
                     task['description'] = new_description
