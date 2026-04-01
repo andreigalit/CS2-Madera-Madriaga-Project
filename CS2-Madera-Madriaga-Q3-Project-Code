@@ -1,80 +1,85 @@
-tasks = {} 
-add_tasks = dict[]
-find_tasks = dict[]
-modify_tasks = dict[]
+tasks = []
 
 def menu():
-  choice=int(input("""Menu\n
+    choice = int(input("""Menu
+
 1. Add new task
-2. Delete tasks
-3. Search tasks
-4. Modify tasks
+2. Delete task
+3. Search task
+4. Modify task
 5. End
 
 Enter choice: """))
-	return
-
-print(menu())
-
-while choice!==5:
-
-	if choice<1 or choice>5:
-        	print("Invalid input!")
-	else:
-		if choice==1:
-        		taskname=str(input("Enter task name: "))
-        		description=str(input("Enter task description: "))
-        		duedate=str(input("Enter due date: "))
-		
-			add_tasks.update([('taskname', taskname), ('description', description), ('duedate', duedate)])
-			tasks.append(add_tasks)
-
-			print("Task added!")
-
-		elif choice==2:
-			delete=str(input("Enter task you want to delete: "))
-		
-			tasks.remove(delete)
-
-			print("Task deleted!")
-
-		elif choice==3:
-			find_taskname=str(input("Enter task name of task you want to find: "))
-			find_descrption=str(input("Enter description of task you want to find: "))
-			find_duedate=str(input("Enter due date of task you want to find: "))
-		
-			find_tasks.update([('taskname', find_taskname), ('description', find_description), ('duedate', find_duedate)])
+    return choice
 
 
-			if find_tasks in tasks:
-				print(find_tasks)
-				print("Task found!")
-			else:
-				print("Task does not exist!")
+choice = menu()
 
-		elif choice==4:
-			modify_taskname=str(input("Enter task name of task you want to modify: "))
-			modify_descrption=str(input("Enter description of task you want to modify: "))
-			modify_duedate=str(input("Enter due date of task you want to modify: "))
-		
-			modify_tasks.update([('taskname', modify_taskname), ('description', modify_description), ('duedate', modify_duedate)])
+while choice != 5:
 
+    if choice < 1 or choice > 5:
+        print("Invalid input!")
 
-			if modify_tasks in tasks:
-				modify2_taskname=str(input("Enter new task name: "))
-				modify2_descrption=str(input("Enter new description: "))
-				modify2_duedate=str(input("Enter new due date: "))
-				
-				modify2_tasks.update([('taskname', modify2_taskname), ('description', modify2_description), ('duedate', modify2_duedate)])
+    else:
+        if choice == 1:
+            taskname = input("Enter task name: ")
+            description = input("Enter task description: ")
+            duedate = input("Enter due date: ")
 
-				tasks[modify_tasks]=modify2_tasks
+            add_task = {'taskname': taskname, 'description': description, 'duedate': duedate}
 
-				print("Task modified!")
-			else:
-				print("Task does not exist!")
+            tasks.append(add_task)
+            print("Task added!")
 
+        elif choice == 2:
+            delete = input("Enter task name you want to delete: ")
 
-	print(menu())
+            found = False
+            for task in tasks:
+                if task['taskname'] == delete:
+                    tasks.remove(task)
+                    found = True
+                    print("Task deleted!")
+                    break
 
+            if not found:
+                print("Task not found!")
+
+        elif choice == 3:
+            find_taskname = input("Enter task name to search: ")
+
+            found = False
+            for task in tasks:
+                if task['taskname'] == find_taskname:
+                    print(task)
+                    print("Task found!")
+                    found = True
+                    break
+
+            if not found:
+                print("Task does not exist!")
+
+        elif choice == 4:
+            modify_taskname = input("Enter task name to modify: ")
+
+            found = False
+            for task in tasks:
+                if task['taskname'] == modify_taskname:
+                    new_name = input("Enter new task name: ")
+                    new_description = input("Enter new description: ")
+                    new_duedate = input("Enter new due date: ")
+
+                    task['taskname'] = new_name
+                    task['description'] = new_description
+                    task['duedate'] = new_duedate
+
+                    print("Task modified!")
+                    found = True
+                    break
+
+            if not found:
+                print("Task does not exist!")
+
+    choice = menu()
 
 print("Goodbye and thank you!")
