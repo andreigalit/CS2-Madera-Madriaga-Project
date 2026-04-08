@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tidy Track</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 40px auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 6px 10px;
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        .task {
+            background: #e3e3e3;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Tidy Track</h2>
+
+    <input id="taskName" placeholder="Task Name">
+    <input id="description" placeholder="Description">
+    <input id="dueDate" placeholder="Due Date(MM/DD/YYYY)">
+    <br>
+
+    <button onclick="addTask()">Add / Update Task</button>
+
+    <h3>Search</h3>
+    <input id="searchBar" placeholder="Search task..." onkeyup="displayTasks()">
+
+    <h3>Tasks</h3>
+    <div id="taskList"></div>
+</div>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let editIndex = -1;
+
+displayTasks();
+
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function isValidDate(dateStr) {
+    let pattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+    return pattern.test(dateStr);
+}
+
+function addTask() {
+    let name = document.getElementById("taskName").value;
+    let desc = document.getElementById("description").value;
+    let date = document.getElementById("dueDate").value;
+
+    if (name === "" || desc === "") {
+        alert("Task name and description are required!");
+        return;
+    }
+
+    if (date !== "" && !isValidDate(date)) {
+        alert("Invalid date! Use MM/DD/YYYY format.");
+        return;
+    }
+
+    let task = {
+        taskname: name,
+        description: desc,
+        duedate: date
+    };
+
+    if (editIndex === -1) {
+        tasks.push(task);
+    } else {
+        tasks[editIndex] = task;
+        editIndex = -1;
+    }
+
+    saveTasks();
+    clearInputs();
+    displayTasks();
+}
+
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    saveTasks();
+    displayTasks();
+}
+
+function editTask(index) {
+    let task = tasks[index];
+
+    document.getElementById("taskName").value = task.taskname;
+    document.getElementById("description").value = task.description;
+    document.getElementById("dueDate").value = task.duedate;
+
+    editIndex = index;
+}
+
+function displayTasks() {
+    let list = document.getElementById("taskList");
+    let search = document.getElementById("searchBar").value.toLowerCase();
+
+    list.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        if (task.taskname.toLowerCase().includes(search)) {
+            let div = document.createElement("div");
+            div.className = "task";
+
+            div.innerHTML = `
+                <b>${task.taskname}</b><br>
+                ${task.description}<br>
+                ${task.duedate ? "Due: " + task.duedate + "<br>" : ""}
+                <button onclick="editTask(${index})">Edit</button>
+                <button onclick="deleteTask(${index})">Delete</button>
+            `;
+
+            list.appendChild(div);
+        }
+    });
+}
+
+function clearInputs() {
+    document.getElementById("taskName").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("dueDate").value = "";
+}
+</script>
+
+</body>
+</html>
