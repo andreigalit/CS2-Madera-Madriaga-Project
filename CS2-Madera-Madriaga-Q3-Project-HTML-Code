@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .task {
+            background: #e3e3e3;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .overdue {
+            background: #ffb3b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Task Manager</h2>
+
+    <input id="taskName" placeholder="Task Name">
+    <input id="description" placeholder="Description">
+    <input id="dueDate" type="date">
+    <br>
+
+    <button onclick="addTask()">Add Task</button>
+
+    <h3>Tasks</h3>
+    <div id="taskList"></div>
+</div>
+
+<script>
+let tasks = [];
+
+function addTask() {
+    let name = document.getElementById("taskName").value;
+    let desc = document.getElementById("description").value;
+    let date = document.getElementById("dueDate").value;
+
+    if (name === "" || desc === "" || date === "") {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    let task = {
+        taskname: name,
+        description: desc,
+        duedate: date
+    };
+
+    tasks.push(task);
+    displayTasks();
+}
+
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    displayTasks();
+}
+
+function displayTasks() {
+    let list = document.getElementById("taskList");
+    list.innerHTML = "";
+
+    let today = new Date();
+
+    tasks.forEach((task, index) => {
+        let taskDate = new Date(task.duedate);
+
+        let div = document.createElement("div");
+        div.className = "task";
+
+        if (taskDate < today) {
+            div.classList.add("overdue");
+        }
+
+        div.innerHTML = `
+            <b>${task.taskname}</b><br>
+            ${task.description}<br>
+            Due: ${task.duedate}<br>
+            <button onclick="deleteTask(${index})">Delete</button>
+        `;
+
+        list.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>
