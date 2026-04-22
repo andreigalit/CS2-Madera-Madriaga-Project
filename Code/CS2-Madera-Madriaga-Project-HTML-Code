@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tidy Track</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-image: url("pink.jpg");
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 40px auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            background-color: rgb(255, 184, 228);
+            padding: 6px 10px;
+            margin: 3px;
+            cursor: pointer;
+            border: none;
+            border-radius: 3px;
+        }
+        .task { 
+            background: #fff4f4;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgb(172, 172, 172);
+        }
+        .no-task {
+            color: gray;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Tidy Track</h2>
+
+        <input id="taskName" placeholder="Task Name">
+        <input id="description" placeholder="Description">
+        <input id="dueDate" type="date">
+        <br>
+
+        <button onclick="addTask()">Add / Update Task</button>
+    </div>
+
+    <div>
+        <h3>Search</h3>
+        <input id="searchBar" placeholder="Search task..." onkeyup="displayTasks()">
+
+        <h3>Tasks</h3>
+        <div id="taskList"></div>
+    </div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        let editIndex = -1;
+
+        displayTasks();
+
+        function saveTasks() {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+        function clearInputs() {
+            document.getElementById("taskName").value = "";
+            document.getElementById("description").value = "";
+            document.getElementById("dueDate").value = "";
+        }
+        function addTask() {
+            let name = document.getElementById("taskName").value;
+            let desc = document.getElementById("description").value;
+            let date = document.getElementById("dueDate").value;
+
+            if (name === "" || desc === "") {
+                alert("Task name and description are required!");
+                return;
+            }
+
+            let task = {
+                taskname: name,
+                description: desc,
+                duedate: date
+            };
+
+            if (editIndex === -1) {
+                tasks.push(task);
+                alert("Task Added!");
+            } else {
+                tasks[editIndex] = task;
+                alert("Task Updated!");
+                editIndex = -1;
+            }
+
+            saveTasks();
+            clearInputs();
+            displayTasks();
+        }
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            alert("Task Removed!");
+
+            saveTasks();
+            displayTasks();
+        }
+        function editTask(index) {
+            let task = tasks[index];
+
+            document.getElementById("taskName").value = task.taskname;
+            document.getElementById("description").value = task.description;
+            document.getElementById("dueDate").value = task.duedate;
+
+            editIndex = index;
+
+            alert("You are now editing this task.");
+        }
+        function displayTasks() {
+            let list = document.getElementById("taskList");
+            let search = document.getElementById("searchBar").value.toLowerCase();
+
+            list.innerHTML = "";
+
+            let found = false;
+
+            tasks.forEach((task, index) => {
+                if (task.taskname.toLowerCase().includes(search)) {
+                    found = true;
+
+                    let div = document.createElement("div");
+                    div.className = "task";
+
+                    div.innerHTML = `
+                        <b>${task.taskname}</b><br>
+                        ${task.description}<br>
+                        ${task.duedate || "No due date"}<br>
+                        <button onclick="editTask(${index})">Edit</button>
+                        <button onclick="deleteTask(${index})">Delete</button>
+                    `;
+
+                    list.appendChild(div);
+                }
+            });
+
+            if (!found && search !== "") {
+                list.innerHTML = "<p class='no-task'>No matching task found.</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>
