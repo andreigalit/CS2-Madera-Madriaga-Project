@@ -25,23 +25,26 @@ These features allow users to fully manage their tasks.
 
 
 ## Technologies Used
-HTML – used to create the structure (inputs, buttons, layout)
-CSS – used to design the look of the app
-JavaScript – used to make the app work (adding, editing, deleting, searching tasks)
+#### HTML 
+– Used to create the structure (inputs, buttons, layout)
+#### CSS 
+– Used to design the look of the app
+#### JavaScript 
+– Used to make the app work (adding, editing, deleting, searching tasks)
 
 ## System Flow
-Adding or Updating a Task
+### Adding or Updating a Task
 -User enters task details
 -System checks the input
 -Task is added or updated
 -Task is saved
 -Task list is refreshed
-Searching Tasks
+### Searching Tasks
 -User types in search bar
 -System checks all tasks
 -Matching tasks are shown
 -If none match, a message is displayed
-Design Decisions
+### Design Decisions
 -Local Storage was used because it is simple and does not need internet
 -Single Page Design makes the app faster and easier to use
 -Simple Layout helps users understand the app quickly
