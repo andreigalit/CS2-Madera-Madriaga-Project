@@ -6,7 +6,6 @@
 ## Core Features
 Task Input
 - Users can type a task name, description, and due date in the input fields. The system checks if the task name and description are filled in before adding the task. This prevents empty tasks.
-
 Task Management
 -Add Task
   -Users can add a new task. Each task is saved with a name, description, and due date.
@@ -14,21 +13,16 @@ Task Management
   -Users can change a task. When editing, the task details appear in the input fields so they can be updated.
 -Delete Task
   -Users can remove a task from the list.
-
 These features allow users to fully manage their tasks.
-
 Search Feature
 -Users can search for tasks using the search bar. The system shows only the tasks that match the typed word. If no task is found, a message will appear.
-
 Task Display
 -All tasks are shown on the screen. Each task includes:
     Task name
     Description
     Due date
     Edit and delete buttons
-
 The display updates automatically whenever changes are made.
-
 Local Storage
 -The system uses the browser’s local storage to save tasks. This means:
   -Tasks stay even after refreshing the page
@@ -41,20 +35,17 @@ CSS – used to design the look of the app
 JavaScript – used to make the app work (adding, editing, deleting, searching tasks)
 
 ## System Flow
-
 Adding or Updating a Task
 -User enters task details
 -System checks the input
 -Task is added or updated
 -Task is saved
 -Task list is refreshed
-
 Searching Tasks
 -User types in search bar
 -System checks all tasks
 -Matching tasks are shown
 -If none match, a message is displayed
-
 Design Decisions
 -Local Storage was used because it is simple and does not need internet
 -Single Page Design makes the app faster and easier to use
