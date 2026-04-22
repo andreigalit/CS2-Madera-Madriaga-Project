@@ -27,8 +27,8 @@ These features allow users to fully manage their tasks.
 The display updates automatically whenever changes are made.
 #### Local Storage
 -The system uses the browser’s local storage to save tasks. This means:
-  -Tasks stay even after refreshing the page
-  -No internet or database is needed
+-Tasks stay even after refreshing the page
+-No internet or database is needed
 
 
 ## Technologies Used
