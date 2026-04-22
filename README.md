@@ -1,4 +1,4 @@
-# CS-2
+# CS 2
 Grade 8 Computer Science 2
 
 # Project Title: Task Reminder and Organizer
@@ -23,7 +23,7 @@ Task Name: Computer Science
 Description: 
 Due Date: 09/05/25
 
-                Tasks
+Tasks
 - Filipino Presentation
   powerpoint presentation
   09/04/25
