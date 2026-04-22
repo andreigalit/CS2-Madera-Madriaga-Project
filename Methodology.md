@@ -4,7 +4,7 @@
 - The project, Tidy Track, is a simple website that helps users organize their tasks. It allows users to add, edit, delete, and search tasks. The goal is to make task management easy and accessible.
 
 ## Core Features
-Task Input
+### Task Input
 - Users can type a task name, description, and due date in the input fields. The system checks if the task name and description are filled in before adding the task. This prevents empty tasks.
 
 Task Management
