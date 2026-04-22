@@ -4,7 +4,7 @@ Grade 8 Computer Science 2
 # Project Title: Task Reminder and Organizer
 
 ## Project Description
-Notifies students on deadlines and organizes tasks.
+A simple task managing app that organizes students tasks and allows them to edit or delete them.
 
 ## Features
 - [Task Manager] Allows users to add, edit, and delete their daily tasks. Each task can include a title, description, and due date.
