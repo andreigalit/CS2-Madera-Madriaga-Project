@@ -19,16 +19,9 @@ These features allow users to fully manage their tasks.
 #### Search Feature
 -Users can search for tasks using the search bar. The system shows only the tasks that match the typed word. If no task is found, a message will appear.
 #### Task Display
--All tasks are shown on the screen. Each task includes:
-    Task name
-    Description
-    Due date
-    Edit and delete buttons
-The display updates automatically whenever changes are made.
+-All tasks are shown on the screen. Each task includes: Task name, Description, Due date, and Edit and delete buttons. The display updates automatically whenever changes are made.
 #### Local Storage
--The system uses the browser’s local storage to save tasks. This means:
--Tasks stay even after refreshing the page
--No internet or database is needed
+-The system uses the browser’s local storage to save tasks. This means: Tasks stay even after refreshing the page, and no internet or database is needed
 
 
 ## Technologies Used
