@@ -6,6 +6,7 @@
 ## Core Features
 Task Input
 - Users can type a task name, description, and due date in the input fields. The system checks if the task name and description are filled in before adding the task. This prevents empty tasks.
+- 
 Task Management
 -Add Task
   -Users can add a new task. Each task is saved with a name, description, and due date.
