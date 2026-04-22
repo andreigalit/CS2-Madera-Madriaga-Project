@@ -7,9 +7,9 @@ Grade 8 Computer Science 2
 Notifies students on deadlines and organizes tasks.
 
 ## Features
-- Enter needed task and due date
-- Organize the tasks in order of date
-- Notifies student when deadlines are close and on the day of the deadlines
+- [Task Manager] Allows users to add, edit, and delete their daily tasks. Each task can include a title, description, and due date.
+- [Task Editing and Updating] Enables users to modify existing tasks if deadlines or priorities change.
+- [Search and Filter Function] Lets users find tasks by keywords for easy navigation.
 
 ## How to run the program
 1. Make sure you have Python installed.
@@ -19,13 +19,18 @@ Notifies students on deadlines and organizes tasks.
 5. Follow the on-screen instructions to enter tasks and due dates.
 
 ## Example Output
-Enter Task: Social Science Research Paper
-Enter Due Date: 09/05/25
+Task Name: Computer Science
+Description: 
+Due Date: 09/05/25
 
-Due dates this week:
-- Filipino Presentation(09/04/25)
-- Social Science Research Paper(09/05/25)
+                Tasks
+- Filipino Presentation
+  powerpoint presentation
+  09/04/25
+- Social Science Research Paper
+  African Civilization
+  09/05/25
 
 ## Contributors
-- Student 1: Nadia Andrei F. Madera (project description & features)
-- Student 2: Ian Nayne N. Madriaga (example output & how to run the program)
+- Student 1: Nadia Andrei F. Madera
+- Student 2: Ian Nayne N. Madriaga
