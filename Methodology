@@ -1,9 +1,9 @@
-#Methodology
+# Methodology
 
-##Project Overview
+## Project Overview
 - The project, Tidy Track, is a simple website that helps users organize their tasks. It allows users to add, edit, delete, and search tasks. The goal is to make task management easy and accessible.
 
-##Core Features
+## Core Features
 Task Input
 - Users can type a task name, description, and due date in the input fields. The system checks if the task name and description are filled in before adding the task. This prevents empty tasks.
 
@@ -35,12 +35,12 @@ Local Storage
   -No internet or database is needed
 
 
-##Technologies Used
+## Technologies Used
 HTML – used to create the structure (inputs, buttons, layout)
 CSS – used to design the look of the app
 JavaScript – used to make the app work (adding, editing, deleting, searching tasks)
 
-##System Flow
+## System Flow
 
 Adding or Updating a Task
 -User enters task details
@@ -60,7 +60,7 @@ Design Decisions
 -Single Page Design makes the app faster and easier to use
 -Simple Layout helps users understand the app quickly
 
-##Limitations
+## Limitations
 -Tasks are only saved on one device
 -Data may be lost if browser storage is cleared
 -Search only works for task names
@@ -71,5 +71,5 @@ Design Decisions
 -Improve design and layout
 -Ethical Consideration
 
-##Conclusion
+## Conclusion
 -Tidy Track is a simple and useful task manager. It shows how basic web tools can be used to create a working and helpful application.
