@@ -55,12 +55,12 @@ These features allow users to fully manage their tasks.
 - Tasks are only saved on one device
 - Data may be lost if browser storage is cleared
 - Search only works for task names
-- Future Improvements
 - Add checkbox for completed tasks
 - Sort tasks by date
 - Add priority levels
 - Improve design and layout
 - Ethical Consideration
+- Signal that task is overdue
 
 ## Conclusion
 - Tidy Track is a simple and useful task manager. It shows how basic web tools can be used to create a working and helpful application.
