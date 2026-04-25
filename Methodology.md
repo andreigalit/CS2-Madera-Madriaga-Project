@@ -31,6 +31,8 @@ These features allow users to fully manage their tasks.
 – Used to design the look of the app
 #### JavaScript 
 – Used to make the app work (adding, editing, deleting, searching tasks)
+#### Gemini AI
+– Used to research for code syntaxes 
 
 ## System Flow
 #### Adding or Updating a Task
